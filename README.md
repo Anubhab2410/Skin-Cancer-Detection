@@ -36,4 +36,4 @@ Notes
 License
 Add an appropriate license file (LICENSE) if you plan to publish the repository publicly.
 
-If you want, I can create a Markdown README.md instead or add CI/GitHub Actions, a .gitignore, or a .gitattributes file for Git LFS.
+
