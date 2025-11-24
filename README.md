@@ -1,39 +1,76 @@
 Skin Cancer Detection - README
 
-Overview
-This repository contains a Streamlit web app for skin lesion classification (Skin Cancer Detection). The Streamlit entrypoint is at: Skin_Cancer_Detection/app.py
+Project
+A Streamlit web application for skin lesion classification using a trained deep learning model.
+Entry point: Skin_Cancer_Detection/app.py
 
-Prerequisites
-- Windows machine
+Key features
+- Web UI built with Streamlit
+- Image upload and prediction page
+- Chat-like expert guidance page
+- Team information page
+- Includes model file(s) in model/ (large binaries) and example dataset
+
+Repository structure (important files)
+- Skin_Cancer_Detection/app.py            - Streamlit entrypoint and page routing
+- Skin_Cancer_Detection/streamlit_pages/  - Page modules (home, predict, chat, team)
+- Skin_Cancer_Detection/assets/           - CSS and static assets
+- model/                                  - Trained model files (.h5) — large, consider Git LFS
+- data/                                   - Example CSVs and datasets
+- requirements.txt                         - Python dependencies
+
+Prerequisites (Windows)
 - Python 3.8+
-- Recommended: virtual environment
-- Streamlit and other dependencies listed in requirements.txt
-- Large model files (.h5) are included in model/ but it's recommended to use Git LFS for those files
+- Git
+- (Recommended) Git LFS for large model files
+- Virtual environment tool (venv)
 
-Quick setup (Windows)
-1. Open PowerShell or Command Prompt at repository root (f:\Skin_Cancer_Detection)
-2. Create and activate venv:
+Quick setup (from repo root: f:\Skin_Cancer_Detection)
+1. Create + activate virtual env (PowerShell)
    python -m venv .venv
-   .\.venv\Scripts\Activate.ps1   # PowerShell
-   # or
-   .\.venv\Scripts\activate.bat   # Command Prompt
-3. Install dependencies:
+   .\.venv\Scripts\Activate.ps1
+
+2. Install dependencies
    pip install -r Skin_Cancer_Detection/requirements.txt
-4. (Optional) Install Git LFS before pushing large models:
+
+3. If you will push model files to GitHub, enable Git LFS:
    git lfs install
    git lfs track "*.h5"
    git add .gitattributes
+   git commit -m "Track .h5 with Git LFS"
 
-Run the app
-From repository root:
+Run the app (from repo root)
 streamlit run Skin_Cancer_Detection/app.py
 
-Notes
-- Do not commit large binary model files without Git LFS or alternative hosting (releases, cloud storage).
-- Static assets are in Skin_Cancer_Detection/assets/
-- Pages are implemented under Skin_Cancer_Detection/streamlit_pages/
+Notes on model files
+- .h5 and other large binaries should not be committed to regular Git history.
+- Options:
+  1) Use Git LFS (preferred for GitHub).
+  2) Host model artifacts in cloud storage (S3, Google Drive) and download at runtime.
+  3) Provide a small placeholder model in repo and document where to place a full model.
 
-License
-Add an appropriate license file (LICENSE) if you plan to publish the repository publicly.
+Recommended .gitignore entries
+__pycache__/
+*.pyc
+.venv/
+.vscode/
+*.h5
+.ipynb_checkpoints
+.DS_Store
 
+Testing & development tips
+- Run Streamlit from the project root so relative asset paths work.
+- Use smaller test images while developing to speed up inference.
+- Add logging around model load/predict to help debug.
+
+Contributing
+- Create an issue for significant changes.
+- Fork the repo, create a branch, and open a pull request.
+
+License & attribution
+- Add a LICENSE file appropriate for your project before publishing.
+- If using public datasets (e.g., ISIC), follow their usage/license terms and cite appropriately.
+
+Contact / Maintainer
+- Anubhab Bhattacharjee(anubhabbhattacharjee07@gmail.com)
 
